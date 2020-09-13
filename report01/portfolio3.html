@@ -1,0 +1,26 @@
+ <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>포트폴리오 - IoT 클라우드 서비스</title>
+</head>
+  
+<body>
+    <h1>IoT 클라우드 서비스</h1>
+
+    <p><center><img src="클라우드.PNG"/></center></p>
+
+    <h2>1. 개요</h2>
+    <p>클라우드를 기반으로 IoT를 사용해 LED와 온습도 센서를 제어한다. Firebase와 Web App, NodeMCU, AndroidApp이
+         실시간으로 인터넷을 통해 데이터를 주고받으며, 이 데이터는 Firebase의 Database에 저장되는 구조로 시스템이 구성된다.</p>
+    <h2>2. 구현 내용</h2>
+    <p>LED를 제어한다는 것에 맞춰 전구로 디자인 했으며, Android App에서는 ON/OFF가 더 직관적으로 보이기 위해
+         문자의 색을 상태에 따라 바뀌도록 설정한다. Wep App과 Android App은 서로 연동되어 같은 데이터베이스 값을 주고받아 출력하여 동작한다.  
+         온도, 습도, 네트워크 상태, 시간, 그래프가 한 눈에 보이도록 디자인 했으며, 특히 그래프를 CanvasJS로 데이터를 시각화 시켜 효과적으로 
+         결과 값을 확인 할 수 있도록 했다. Android App에서는 Web App과 다르게 current data로 재배치 하여 효율적인 시각효과를 주었다. 
+         Web App과 Android App은 서로 연동되어 같은 데이터베이스 값을 주고받아 출력하여 동작한다.</p>
+    <h2>3. 기대 효과</h2>
+    <p>프로젝트를 통해 실시간으로 데이터를 주고 받는 방식을 정확히 알아야하며, 
+         실생활에서 IoT가 어떻게 사용 되는지 알 수 있어야 한다.</p>
+    <p><a href="https://github.com/BAEYEJIN47/IoT-with-NodeMCU-and-Firebase">자세히 보기</a></p>
