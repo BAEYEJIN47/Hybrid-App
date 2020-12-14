@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.dit;
+
+<span class="s0">import </span>androidx.appcompat.app.AppCompatActivity;
+
+<span class="s0">import </span>android.os.AsyncTask;
+<span class="s0">import </span>android.os.Bundle;
+<span class="s0">import </span>android.widget.LinearLayout;
+<span class="s0">import </span>android.widget.ListView;
+
+<span class="s0">import </span>org.json.JSONArray;
+<span class="s0">import </span>org.json.JSONObject;
+
+<span class="s0">import </span>java.io.BufferedReader;
+<span class="s0">import </span>java.io.InputStream;
+<span class="s0">import </span>java.io.InputStreamReader;
+<span class="s0">import </span>java.net.HttpURLConnection;
+<span class="s0">import </span>java.net.URL;
+<span class="s0">import </span>java.util.ArrayList;
+<span class="s0">import </span>java.util.List;
+
+<span class="s0">public class </span>MainActivity <span class="s0">extends </span>AppCompatActivity {
+    <span class="s0">private </span>ListView reportListView;
+    <span class="s0">private </span>ReportListAdapter adapter;
+    <span class="s0">private </span>List&lt;Report&gt; reportList;
+
+    @Override
+    <span class="s0">protected void </span>onCreate(Bundle savedInstanceState) {
+        <span class="s0">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        reportListView = (ListView)findViewById(R.id.reportListView);
+        reportList = <span class="s0">new </span>ArrayList&lt;Report&gt;();
+        adapter = <span class="s0">new </span>ReportListAdapter(getApplicationContext(), reportList);
+        reportListView.setAdapter(adapter);
+
+        <span class="s0">new </span>BackgroundTask().execute();
+    }
+
+<span class="s0">class </span>BackgroundTask <span class="s0">extends </span>AsyncTask&lt;Void, Void, String&gt; {
+    String target;
+
+    <span class="s0">protected void </span>onPreExecute() {
+        target = <span class="s2">&quot;http://dit.dothome.co.kr/dit.php&quot;</span>;
+    }
+
+    <span class="s0">protected </span>String doInBackground(Void... voids) {
+        <span class="s0">try </span>{
+            URL url = <span class="s0">new </span>URL(target);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = <span class="s0">new </span>BufferedReader(<span class="s0">new </span>InputStreamReader(inputStream));
+            String temp;
+            StringBuilder stringBuilder = <span class="s0">new </span>StringBuilder();
+            <span class="s0">while </span>((temp = bufferedReader.readLine()) != <span class="s0">null</span>) {
+                stringBuilder.append(temp + <span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">&quot;</span>);
+            }
+            bufferedReader.close();
+            inputStream.close();
+            httpURLConnection.disconnect();
+            <span class="s0">return </span>stringBuilder.toString().trim();
+        } <span class="s0">catch </span>(Exception e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public void </span>onProgressUpdate(Void... values) {
+        <span class="s0">super</span>.onProgressUpdate();
+    }
+
+    <span class="s0">public void </span>onPostExecute(String result) {
+        <span class="s0">try </span>{
+            JSONObject jsonObject = <span class="s0">new </span>JSONObject(result);
+            JSONArray jsonArray = jsonObject.getJSONArray(<span class="s2">&quot;response&quot;</span>);
+            <span class="s0">int </span>count = <span class="s3">0</span>;
+            String reportContent, reportName, reportDate;
+            <span class="s0">while </span>(count &lt; jsonArray.length()) {
+                JSONObject object = jsonArray.getJSONObject(count);
+                reportContent = object.getString(<span class="s2">&quot;reportContent&quot;</span>);
+                reportName = object.getString(<span class="s2">&quot;reportName&quot;</span>);
+                reportDate = object.getString(<span class="s2">&quot;reportDate&quot;</span>);
+
+                Report report = <span class="s0">new </span>Report(reportContent, reportName, reportDate);
+
+                reportList.add(report);
+                count++;
+            }
+
+            adapter.notifyDataSetChanged();
+        } <span class="s0">catch </span>(Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+}</pre>
+</body>
+</html>
