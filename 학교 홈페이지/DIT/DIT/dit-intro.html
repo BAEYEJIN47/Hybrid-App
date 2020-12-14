@@ -1,0 +1,152 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>jQuery Mobile</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+   li { list-style:none; }
+  .picture { list-style:none; padding:0; margin:0; }
+  .picture li { float:left; width:50%;}
+  .picture li a {display:block; margin:5px; border: 1px }
+  .picture li img { display:block; width:50%;  height:auto;}
+  .picture li img:hover { display:block; width:100%;  height:auto;} 
+</style>
+</head>
+
+<body>
+<div data-theme="b">
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b">
+			<h1>동의과학대학교</h1>
+		</div>
+		<div data-role="content" style="text-align:center">
+				<img src="11.png" >
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#intro">대학소개</a></li>
+				<li><a href="#movie" data-rel="dialog">입학안내</a></li>
+				<li><a href="#wizard3-1" data-rel="dialog">홍보영상</a></li>
+				<li><a href="#gallery">교내소식</a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>동의과학대학교_배예진</h1>
+		</div>
+	</div>
+	
+	<div data-role="page" id="intro" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>			
+			<h1>대학 소개</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="11.png">
+				</div>			
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>설립이념</h3>
+					<p>본 대학은 동의학원 설립자이며 이사장인 故 석당 김임식 박사의 학원설립 이념인 '동의지천(東義知天)'에 바탕을 두고 있다. '동의(東義)'와 '지천(知天)'은 동의과학대학교가 지향해야 할 대명제이자 교육 지표로서 동의학원의 설립이념이자 건학정신이라고 할 수 있다.
+                                                                 동의는 바로 '새로운 도덕관, 바르고 참된 뜻을 펼치는 학문하는 곳' 이요, 지천이란 '군자'가 걸어야 할 지상의 목표이다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>교육목표</h3>
+					<p>대한민국 교육의 근본이념에 입각하여 국가 산업 발전에 필요한 전문지식과 이론을 교수 연구하고 재능을 연마하여 국가 발전에 필요한 전문 기술인을 양성한다.</p>
+				</div>
+				<div data-role="collapsible" >
+					<h3>교육방침</h3>
+					<p>전문 기술인으로서 갖추어야 할 교양과 전문기술을 배양하여 창의적인 직업기술인 양성,
+ 				                  산학협동교육의 강화로 산업사회에 이바지하는 교육과정의 개발,
+					      발전하는 산업사회의 기술개발에 기여할 수 있는 자질과 능력 배양,
+					      면학분위기 조성을 위한 쾌적한 교육환경 조성한다.</p>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>동의과학대학교_배예진</h1>
+		</div>		
+	</div>
+	
+	<div data-role="page" id="movie" data-theme="b">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>입학 안내</h1>
+		</div>
+		<div data-role="content" >
+			<div class="ui-bar ui-bar-e">캠퍼스라이프</div><br/>
+			<li><video controls width="100%" preload="metadata">
+				<source src="캠퍼스라이프.mp4" type="video/mp4">
+			</video></li>
+			<div class="ui-bar ui-bar-e">입학전형안내</div><br/>
+			<li><video controls width="100%" preload="metadata">
+				<source src="전형안내.mp4" type="video/mp4">
+			</video></li>
+		</div>
+		<div data-role="footer" data-theme="b">
+		</div>
+	</div>
+	
+	<div data-role="page" id="wizard3-1">
+		<div data-role="header">
+			<h1>동의과학대학교 홍보</h1>
+		</div>
+		<div data-role="content">
+			<div class="ui-bar ui-bar-e">CF1</div><br/>
+			<audio controls width="100%" preload="metadata">
+				<source src="cf2.mp3" type="audio/mp3">
+			</audio>	
+			<img src="3-1.jpg" alt="" width="100%">
+		</div>
+		<div data-role="footer">
+			<a href="#home"  data-direction="reverse">이전</a>
+			<a href="#wizard3-2" data-rel="dialog" data-transition="slide">다음</a>
+		</div>
+	</div>
+
+	<div data-role="page" id="wizard3-2">
+		<div data-role="header">
+			<h1>동의과학대학교 홍보</h1>
+		</div>
+		<div data-role="content">
+			<div class="ui-bar ui-bar-e">CF2</div><br/>
+			<audio controls width="100%" preload="metadata">
+				<source src="cf1.mp3" type="audio/mp3">
+			</audio>			
+			<img src="3-2.jpg" alt="" width="100%">
+		</div>
+		<div data-role="footer">
+			<a href="#wizard3-1"  data-direction="reverse">이전</a>
+			<a href="#home">처음</a>
+		</div>
+	</div>
+
+	<div data-role="page" id="gallery"  data-theme="b">
+		<div data-role="header" data-position="fixed"  data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>교내 소식</h1>
+		</div>
+		<div data-role="content">
+            <ul class="picture">
+				<li><a href="4-1.jpg" rel="external"><img src="4-1.jpg" /></a></li>	
+				<li><a href="4-2.jpg" rel="external"><img src="4-2.jpg" /></a></li>	
+				<li><a href="4-3.jpg" rel="external"><img src="4-3.jpg" /></a></li>	
+				<li><a href="4-4.jpg" rel="external"><img src="4-4.jpg" /></a></li>	
+				<li><a href="4-5.jpg" rel="external"><img src="4-5.jpg" /></a></li>	
+				<li><a href="4-6.jpg" rel="external"><img src="4-6.jpg" /></a></li>	
+				<li><a href="4-7.jpg" rel="external"><img src="4-7.jpg" /></a></li>	
+				<li><a href="4-8.jpg" rel="external"><img src="4-8.jpg" /></a></li>	
+				<li><a href="4-9.jpg" rel="external"><img src="4-9.jpg" /></a></li>	 
+				<li><a href="4-10.jpg" rel="external"><img src="4-10.jpg" /></a></li>    
+				<li><a href="4-11.jpg" rel="external"><img src="4-11.jpg" /></a></li>   
+				<li><a href="4-12.jpg" rel="external"><img src="4-12.jpg" /></a></li>
+            </ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>동의과학대학교_배예진</h1>
+		</div>		
+	</div>
+</div>	
+</body>
+</html>
